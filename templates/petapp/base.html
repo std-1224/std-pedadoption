@@ -1,0 +1,90 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}My Website{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="icon" href="/media/image/logo2.png" type="image/png">
+  </head>
+  <body>
+    <!-- Header Section -->
+    {% include 'petapp/header.html' %}
+
+    <!-- Main Content Section -->
+    <main>{% block content %}{% endblock %}</main>
+
+    <!-- Footer Section -->
+    {% include 'petapp/footer.html' %}
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const openModalBtn = document.querySelector("#openModalBtn"); // Updated button selector
+        const modalBox = document.querySelector("#modalBox");
+        const modalCloseBtn = document.querySelector("#modalCloseBtn");
+      
+        // Open modal on button click
+        openModalBtn?.addEventListener("click", () => {
+          modalBox?.classList.remove("hidden");
+          modalBox?.classList.add("block");
+        });
+      
+        // Close modal on close button click
+        modalCloseBtn?.addEventListener("click", () => {
+          modalBox?.classList.remove("block");
+          modalBox?.classList.add("hidden");
+        });
+      });
+      
+
+      function toggleDistricts(divisionId) {
+        // Get the district list element by division ID
+        const districtList = document.getElementById(`districts-${divisionId}`);
+        
+        // Close any other open district lists
+        document.querySelectorAll("ul[id^='districts-']").forEach(list => {
+            if (list !== districtList) {
+                list.classList.add("hidden");
+            }
+        });
+
+        // Toggle the 'hidden' class to show/hide the district list
+        if (districtList) {
+            districtList.classList.toggle("hidden");
+        }
+    }
+    function toggleDrawer() {
+      const sidebar = document.getElementById('sidebar');
+      const toggleButton = document.getElementById('toggleButton');
+      const toggleIcon = document.getElementById('toggleIcon');
+    
+      // Ensure all elements exist
+      if (!sidebar || !toggleButton || !toggleIcon) {
+        console.error('Sidebar, toggle button, or toggle icon not found!');
+        return;
+      }
+    
+      // Toggle sidebar visibility
+      sidebar.classList.toggle('-translate-x-full');
+    
+      // Toggle button and icon classes
+      if (sidebar.classList.contains('-translate-x-full')) {
+        toggleButton.classList.remove('left-[62%]');
+        toggleButton.classList.add('left-0');
+        toggleIcon.classList.remove('rotate-90');
+        toggleIcon.classList.add('-rotate-90');
+      } else {
+        toggleButton.classList.remove('left-0');
+        toggleButton.classList.add('left-[62%]');
+        toggleIcon.classList.remove('-rotate-90');
+        toggleIcon.classList.add('rotate-90');
+      }
+    }
+    </script>
+  </body>
+</html>

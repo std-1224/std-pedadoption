@@ -1,0 +1,254 @@
+{% extends "petapp/base.html" %}
+
+{% block title %} Pets - PetHomeBD {% endblock %}
+
+{% block content %}
+
+<div class="min-h-screen px-7 md:px-0 bg-gray-50 flex flex-col justify-center py-32 sm:px-6 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Create your account</h2>
+  </div>
+
+  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="bg-white py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
+      <form class="space-y-6" method="POST">
+        {% csrf_token %}
+        <div class="flex justify-between gap-2">
+          <div>
+            <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+            <div class="mt-1 relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fas fa-user text-gray-400"></i>
+              </div>
+              <input
+                id="firstName"
+                name="firstName"
+                type="text"
+                value="{{ form_data.first_name|default:'' }}"
+                class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-rose-500 focus:border-rose-500"
+                placeholder="Enter first name"
+                required
+              />
+            </div>
+          </div>
+  
+          <div>
+            <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+            <div class="mt-1 relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fas fa-user text-gray-400"></i>
+              </div>
+              <input
+                id="lastName"
+                name="lastName"
+                type="text"
+                value="{{ form_data.last_name|default:'' }}"
+                class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-rose-500 focus:border-rose-500"
+                placeholder="Enter last name"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+          <div class="mt-1 relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-user text-gray-400"></i>
+            </div>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              value="{{ form_data.username|default:'' }}"
+              class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-rose-500 focus:border-rose-500"
+              placeholder="Enter your last name"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="emailAddress" class="block text-sm font-medium text-gray-700">Email address</label>
+          <div class="mt-1 relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-envelope text-gray-400"></i>
+            </div>
+            <input
+              id="emailAddress"
+              name="emailAddress"
+              type="email"
+              value="{{ form_data.email|default:'' }}"
+              class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-rose-500 focus:border-rose-500"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="phone1" class="block text-sm font-medium text-gray-700">Phone Number</label>
+          <div class="mt-1 relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-phone text-gray-400"></i>
+            </div>
+            <input
+              id="phone1"
+              name="phone1"
+              type="tel"
+              value="{{ form_data.phone1|default:'' }}"
+              class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-rose-500 focus:border-rose-500"
+              placeholder="Enter your phone number"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="phone2" class="block text-sm font-medium text-gray-700">Phone Number (Optional)</label>
+          <div class="mt-1 relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-phone text-gray-400"></i>
+            </div>
+            <input
+              id="phone2"
+              name="phone2"
+              type="tel"
+              value="{{ form_data.phone2|default:'' }}"
+              class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-rose-500 focus:border-rose-500"
+              placeholder="Enter your phone number"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="socialLink" class="block text-sm font-medium text-gray-700">Social Media link (Facebook, Instagram)</label>
+          <div class="mt-1 relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-link text-gray-400"></i>
+            </div>
+            <input
+              id="socialLink"
+              name="socialLink"
+              type="text"
+              value="{{ form_data.socialLink|default:'' }}"
+              class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-rose-500 focus:border-rose-500"
+              placeholder="Enter your phone number"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+          <div class="mt-1 relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-location-dot text-gray-400"></i>
+            </div>
+            <input
+              id="address"
+              name="address"
+              type="text"
+              value="{{ form_data.address|default:'' }}"
+              class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-rose-500 focus:border-rose-500"
+              placeholder="Enter your address"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="state" class="block text-sm font-medium text-gray-700">State</label>
+          <div class="mt-1 relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-building text-gray-400"></i>
+            </div>
+            <input
+              id="state"
+              name="state"
+              type="text"
+              value="{{ form_data.state|default:'' }}"
+              class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-rose-500 focus:border-rose-500"
+              placeholder="Enter your state"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <div class="mt-1 relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-lock text-gray-400"></i>
+            </div>
+            <input
+              id="password"
+              name="password1"
+              type="password"
+              class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-rose-500 focus:border-rose-500"
+              placeholder="Create a password"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="confirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+          <div class="mt-1 relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-lock text-gray-400"></i>
+            </div>
+            <input
+              id="confirmPassword"
+              name="password2"
+              type="password"
+              class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-rose-500 focus:border-rose-500"
+              placeholder="Confirm your password"
+              required
+            />
+          </div>
+        </div>
+
+        {% if messages %}
+          {% for message in messages %}
+            <div class="mt-4 p-4 rounded-md border {% if message.tags == 'success' %}bg-green-100 border-green-400 text-green-800{% else %}bg-red-100 border-red-400 text-red-800{% endif %}">
+              <p>{{ message }}</p>
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        <div>
+          <button
+            type="submit"
+            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-rose-600 hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
+          >
+            <i class="fas fa-user-plus mr-2"></i> Create Account
+          </button>
+        </div>
+      </form>
+
+      <div class="mt-6">
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-gray-300"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="px-2 bg-white text-gray-500">Already have an account?</span>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <a
+            href="{% url 'login' %}"
+            class="w-full flex justify-center py-2 px-4 border border-rose-300 rounded-md shadow-sm text-sm font-medium text-rose-600 bg-white hover:bg-rose-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
+          >
+            Sign in instead
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} 
